@@ -40,12 +40,21 @@
     force: yes
   when: kg_exists.stat.exists is defined and kg_exists.stat.exists == False
   become: True
-  become_user: www-data
+
+- name: Kippo-Graph | Set mode for generated-graphs
+  file:
+    path: "{{ kg_cwd }}"
+    owner: "www-data"
+    group: "www-data"
+    state: directory
+    recurse: yes
 
 - name: Kippo-Graph | Set mode for generated-graphs
   file:
     path: "{{ kg_cwd }}/generated-graphs"
     mode: 0777
+
+
 
 - name: Kippo-Graph | Drop Apt rule temp 80
   iptables: chain=TCP-OUT protocol=tcp state=absent action=insert ctstate=NEW destination_port=80 jump=LOGALLOW
