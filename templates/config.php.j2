@@ -19,11 +19,11 @@ require_once(DIR_ROOT . '/include/languages/lang.en.php');
 # according to your MySQL server instance. When you installed Kippo/Cowrie
 # and configured MySQL logging, you should have created a new
 # MySQL user just for this job, otherwise use root (not recommended!)
-define('DB_HOST', '127.0.0.1');
-define('DB_USER', 'username');
-define('DB_PASS', 'password');
-define('DB_NAME', 'database');
-define('DB_PORT', '3306');
+define('DB_HOST', '{{ cowrie_output_mysql_host | default(localhost) }}');
+define('DB_USER', '{{ cowrie_output_mysql_username | default(cowrie) }}');
+define('DB_PASS', '{{ cowrie_output_mysql_password | default(fullsecret) }}');
+define('DB_NAME', '{{ cowrie_output_mysql_database | default(cowrie) }}');
+define('DB_PORT', '{{ cowrie_output_mysql_port | default(3306) }}');
 
 # Which geolocation method should be used -- Default: LOCAL (MaxMind)
 # Note: LOCAL (MaxMind) enables additional fields in various components.
