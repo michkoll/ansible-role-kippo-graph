@@ -15,6 +15,7 @@
   become: True
   with_items:
     - "{{ kg_apt_dependencies }}"
+  notify: Restart Apache
 
 - name: Kippo-Graph | Check if kg cwd exists already
   stat:
