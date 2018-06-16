@@ -42,13 +42,14 @@
   when: kg_exists.stat.exists is defined and kg_exists.stat.exists == False
   become: True
 
-- name: Kippo-Graph | Set mode for generated-graphs
+- name: Kippo-Graph | Set owner
   file:
     path: "{{ kg_cwd }}"
     owner: "www-data"
     group: "www-data"
     state: directory
     recurse: yes
+  become: True
 
 - name: Kippo-Graph | Set mode for generated-graphs
   file:
