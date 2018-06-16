@@ -2,9 +2,9 @@
 # defaults file for kippo-graph
 
 kg_apt_dependencies:
-  - libapache2-mod-php5
-  - php5-mysql
-  - php5-gd
-  - php5-curl
+  - libapache2-mod-php
+  - php-mysql
+  - php-gd
+  - php-curl
 
 kg_cwd: "/var/www/html/kippo-graph"
