@@ -54,6 +54,8 @@
     path: "{{ kg_cwd }}/generated-graphs"
     mode: 0777
 
+- debug:
+    var: cowrie_output_mysql_host
 
 
 - name: Kippo-Graph | Drop Apt rule temp 80
