@@ -40,6 +40,7 @@
     force: yes
   when: kg_exists.stat.exists is defined and kg_exists.stat.exists == False
   become: True
+  become_user: www-data
 
 - name: Kippo-Graph | Set mode for generated-graphs
   file:
@@ -52,4 +53,8 @@
 
 - name: Kippo-Graph | Drop Apt rule temp 443
   iptables: chain=TCP-OUT protocol=tcp state=absent action=insert ctstate=NEW destination_port=443 jump=LOGALLOW
+  become: true
+
+- name: Kippo-Graph | Allow port 80 for Kippo-graph
+  iptables: chain=TCP-IN protocol=tcp state=present action=insert ctstate=NEW destination_port=80 jump=LOGALLOW
   become: true
