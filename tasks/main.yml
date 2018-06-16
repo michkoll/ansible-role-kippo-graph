@@ -54,6 +54,7 @@
   file:
     path: "{{ kg_cwd }}/generated-graphs"
     mode: 0777
+  become: True
 
 - name: Kippo-Graph | Drop Apt rule temp 80
   iptables: chain=TCP-OUT protocol=tcp state=absent action=insert ctstate=NEW destination_port=80 jump=LOGALLOW
