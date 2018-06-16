@@ -76,3 +76,4 @@
 - name: Kippo-Graph | Allow port 80 for Kippo-graph
   iptables: chain=TCP-IN protocol=tcp state=present action=insert ctstate=NEW destination_port=80 jump=LOGALLOW
   become: true
+  notify: Restart Apache
